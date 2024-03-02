@@ -1,6 +1,7 @@
 const express = require("express");
 const morgan = require('morgan');
 const debug = require('debug')('app:startup');
+const cors = require('cors'); 
 const home = require('./src/routes/home');
 const search = require('./src/routes/search');
 const detail = require('./src/routes/mangadetail');
@@ -10,6 +11,9 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Enable CORS for all routes
+app.use(cors());
 
 app.use('/api/home', home);
 app.use('/api/search',search);
