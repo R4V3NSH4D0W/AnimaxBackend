@@ -11,12 +11,15 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/home', home);
-app.use('/search',search);
-app.use('/detail',detail);
-app.use('/manga',manga);
+app.use('/api/home', home);
+app.use('/api/search',search);
+app.use('/api/detail',detail);
+app.use('/api/manga',manga);
 
 if (app.get('env') === 'development') {
     app.use(morgan('tiny'));
     debug("morganEnabled");
 }
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => console.log(`Listening on port ${port}...`));

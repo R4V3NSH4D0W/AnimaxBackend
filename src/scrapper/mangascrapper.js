@@ -98,7 +98,7 @@ async function scrapeManga(chapterNumber) {
         const $ = cheerio.load(response.data);
 
         const imageUrls = [];
-        $('#readerarea img.ts-main-image').each((index, element) => {
+        $('#readerarea img').each((index, element) => {
             const imageUrl = $(element).attr('src');
             imageUrls.push(imageUrl);
         });
