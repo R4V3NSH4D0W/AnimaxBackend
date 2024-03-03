@@ -12,8 +12,11 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Enable CORS for all routes
 app.use(cors());
+
+app.use((req, res, next) => {
+    setTimeout(next, 1000); 
+});
 
 app.use('/api/home', home);
 app.use('/api/search',search);
